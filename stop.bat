@@ -18,23 +18,23 @@ tasklist | findstr /I "python.exe py.exe" >nul 2>&1
 if %errorlevel% equ 0 (
     echo 找到 Python 进程，正在停止...
     echo.
-    
+
     REM 停止所有 python.exe 进程
     taskkill /IM python.exe /F >nul 2>&1
     if %errorlevel% equ 0 (
         echo  [成功] python.exe 进程已停止
     )
-    
+
     REM 停止所有 py.exe 进程
     taskkill /IM py.exe /F >nul 2>&1
     if %errorlevel% equ 0 (
         echo  [成功] py.exe 进程已停止
     )
-    
+
     echo.
     echo  ╔════════════════════════════════════════════════════════════╗
     echo  ║                                                            ║
-    echo  ║  ✓ Python 进程已停止                                     ║
+    echo  ║  ? Python 进程已停止                                     ║
     echo  ║                                                            ║
     echo  ╚════════════════════════════════════════════════════════════╝
 ) else (

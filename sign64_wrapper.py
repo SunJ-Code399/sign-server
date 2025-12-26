@@ -72,13 +72,11 @@ class Sign64Wrapper:
     def _find_dll_path() -> Optional[str]:
         """
         在常见位置查找 Sign64.dll：
-        - <project_root>/getcode/bin/Sign64.dll
-        - <project_root>/getcode/Sign64.dll
+        - <project_root>/dll/Sign64.dll
         """
         base_dir = Path(__file__).resolve().parent  # 项目根目录
         candidates = [
-            base_dir / "getcode" / "bin" / "Sign64.dll",
-            base_dir / "getcode" / "Sign64.dll",
+            base_dir / "dll" / "Sign64.dll",
         ]
 
         for p in candidates:
