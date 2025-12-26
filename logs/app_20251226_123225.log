@@ -1,0 +1,34 @@
+2025-12-26 12:32:26,517 - sign64_wrapper - INFO - ≥…π¶º”‘ÿ Sign64.dll: D:\TEST\sign-server\dll\Sign64.dll
+2025-12-26 12:32:26,520 - __main__ - INFO - Flask”¶”√∆Ù∂Ø
+2025-12-26 12:32:26,520 - __main__ - INFO - AES√‹‘ø≈‰÷√: “—≈‰÷√
+2025-12-26 12:32:26,520 - __main__ - INFO - ∑˛ŒÒµÿ÷∑: http://0.0.0.0:8801
+ * Serving Flask app 'app'
+ * Debug mode: on
+2025-12-26 12:32:26,567 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8801
+ * Running on http://192.168.10.109:8801
+2025-12-26 12:32:26,567 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-12-26 12:32:26,570 - werkzeug - INFO -  * Restarting with stat
+2025-12-26 12:32:27,012 - sign64_wrapper - INFO - ≥…π¶º”‘ÿ Sign64.dll: D:\TEST\sign-server\dll\Sign64.dll
+2025-12-26 12:32:27,015 - __main__ - INFO - Flask”¶”√∆Ù∂Ø
+2025-12-26 12:32:27,015 - __main__ - INFO - AES√‹‘ø≈‰÷√: “—≈‰÷√
+2025-12-26 12:32:27,015 - __main__ - INFO - ∑˛ŒÒµÿ÷∑: http://0.0.0.0:8801
+2025-12-26 12:32:27,041 - werkzeug - WARNING -  * Debugger is active!
+2025-12-26 12:32:27,043 - werkzeug - INFO -  * Debugger PIN: 257-947-352
+2025-12-26 12:33:21,650 - __main__ - INFO -  ’µΩ getCode «Î«Û
+2025-12-26 12:33:21,651 - services.xml_service - INFO -  ’µΩ√‹Œƒ£®Ω‚√‹«∞£©£¨≥§∂»=128£¨ƒ⁄»›‘§¿¿: 0D17722A876D74DDA0831417E57324BDE475E70F16DE01E943A6D301FC93C02B64F78A06C235E1309BE28BCF1E6E59E89FEB5675CFB85A86A830FFE450D17B1A
+2025-12-26 12:33:21,654 - services.xml_service - INFO - Ω‚√‹≥…π¶£®Ω‚√‹∫Û£©£¨≥§∂»=49£¨ƒ⁄»›: {"str": "test_data_string", "pwdstr": "Vitup123"}
+2025-12-26 12:33:22,931 - __main__ - INFO - Sign64.getCode µ˜”√≥…π¶£¨Ω·π˚≥§∂»=182
+2025-12-26 12:33:22,932 - __main__ - INFO - Ω·π˚“—≤∑÷Œ™ sign ∫Õ certNo
+2025-12-26 12:33:22,932 - services.xml_service - INFO - ◊º±∏º”√‹œÏ”¶ ˝æ›£®º”√‹«∞£©£¨≥§∂»=206£¨ƒ⁄»›: {"sign": "FRe9yu6Sho5gkPH0kiwwq8Vm4f7B9YcUPjg3Eggif5gMpXTyJVgwNdGrijBFlrEuJpFUpqkhwgJlZZKrPEkLL6SfuWJiuEl7rcTVZe2sLKo1omxYYRhA/QaPBJNxJbd9c9QXHtk+UxvhYVHfV9DCgRUvGyDJEOdnc2IbQhl3kPY=", "certNo": "013e20e7"}
+2025-12-26 12:33:22,933 - services.xml_service - INFO - º”√‹≥…π¶£®º”√‹∫Û£©£¨≥§∂»=416£¨ƒ⁄»›‘§¿¿: D179434E4BA71967B01350D67F15E44F47E946079C55B358C8F8847EFF944D576F355494CDE8FE12E669A8AD541C14DB722673076AEED51F5F5E65DB415CCF88D55821E409405E040E560677394FBA8CDB8E03B3CC3321184C21959208440756C4AE348A
+2025-12-26 12:33:22,934 - werkzeug - INFO - 127.0.0.1 - - [26/Dec/2025 12:33:22] "POST /getCode HTTP/1.1" 200 -
+2025-12-26 12:33:51,929 - __main__ - INFO -  ’µΩ getCode «Î«Û
+2025-12-26 12:33:51,929 - services.xml_service - INFO -  ’µΩ√‹Œƒ£®Ω‚√‹«∞£©£¨≥§∂»=128£¨ƒ⁄»›‘§¿¿: 0D17722A876D74DDA0831417E57324BDE475E70F16DE01E943A6D301FC93C02B64F78A06C235E1309BE28BCF1E6E59E89FEB5675CFB85A86A830FFE450D17B1A
+2025-12-26 12:33:51,929 - services.xml_service - INFO - Ω‚√‹≥…π¶£®Ω‚√‹∫Û£©£¨≥§∂»=49£¨ƒ⁄»›: {"str": "test_data_string", "pwdstr": "Vitup123"}
+2025-12-26 12:33:53,203 - __main__ - INFO - Sign64.getCode µ˜”√≥…π¶£¨Ω·π˚≥§∂»=182
+2025-12-26 12:33:53,203 - __main__ - INFO - Ω·π˚“—≤∑÷Œ™ sign ∫Õ certNo
+2025-12-26 12:33:53,203 - services.xml_service - INFO - ◊º±∏º”√‹œÏ”¶ ˝æ›£®º”√‹«∞£©£¨≥§∂»=206£¨ƒ⁄»›: {"sign": "FRe9yu6Sho5gkPH0kiwwq8Vm4f7B9YcUPjg3Eggif5gMpXTyJVgwNdGrijBFlrEuJpFUpqkhwgJlZZKrPEkLL6SfuWJiuEl7rcTVZe2sLKo1omxYYRhA/QaPBJNxJbd9c9QXHtk+UxvhYVHfV9DCgRUvGyDJEOdnc2IbQhl3kPY=", "certNo": "013e20e7"}
+2025-12-26 12:33:53,203 - services.xml_service - INFO - º”√‹≥…π¶£®º”√‹∫Û£©£¨≥§∂»=416£¨ƒ⁄»›‘§¿¿: D179434E4BA71967B01350D67F15E44F47E946079C55B358C8F8847EFF944D576F355494CDE8FE12E669A8AD541C14DB722673076AEED51F5F5E65DB415CCF88D55821E409405E040E560677394FBA8CDB8E03B3CC3321184C21959208440756C4AE348A
+2025-12-26 12:33:53,205 - werkzeug - INFO - 127.0.0.1 - - [26/Dec/2025 12:33:53] "POST /getCode HTTP/1.1" 200 -
