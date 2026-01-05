@@ -16,5 +16,7 @@ LOG_LEVEL = "INFO"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 # WebSocket 签名服务配置
-WS_URL = "ws://127.0.0.1:61232/"
+# WebSocket 接口来源于海关程序，需要先安装海关卡驱动并插入操作员卡
+# 优先使用本地地址
+WS_URL = "ws://127.0.0.1:61232"
 
