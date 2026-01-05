@@ -1,7 +1,7 @@
 """
 Flask Web应用主文件
 提供/receive-xml接口，接收AES密文，解密为JSON后写入XML
-同时提供基于 Sign64.dll 的 getCode 接口
+同时提供基于 WebSocket 签名服务的 getCode 接口
 """
 import logging
 from flask import Flask, request, jsonify
@@ -16,7 +16,7 @@ from services.xml_service import (
     encrypt_response_data,
     ensure_directory_exists,
 )
-from sign64_wrapper import Sign64Wrapper, Sign64Error
+from websocket_wrapper import WebSocketWrapper, WebSocketError
 
 # 配置日志
 logging.basicConfig(
@@ -34,8 +34,8 @@ try:
 except Exception:
     pass
 
-# 初始化 Sign64 封装
-sign64 = Sign64Wrapper()
+# 初始化 WebSocket 签名服务封装
+sign_service = WebSocketWrapper()
 
 
 @app.route('/xml-files/list', methods=['POST'])
@@ -178,14 +178,14 @@ def root():
     return jsonify({
         "service": "Sign Server",
         "version": "1.0.0",
-        "status": "running" if sign64.is_available() else "sign64_not_available",
+        "status": "running" if sign_service.is_available() else "websocket_not_available",
         "endpoints": {
             "xml_files": {
                 "list": {"method": "POST", "path": "/xml-files/list"},
                 "add": {"method": "POST", "path": "/xml-files/add"},
                 "delete": {"method": "POST", "path": "/xml-files/delete"},
             },
-            "sign64": {
+            "sign": {
                 "getCode": {"method": "POST", "path": "/getCode"},
             },
             "health": {"method": "GET", "path": "/health"},
@@ -198,19 +198,19 @@ def health_check():
     """
     健康检查接口
     """
-    sign64_status = "healthy" if sign64.is_available() else "sign64_not_available"
+    sign_status = "healthy" if sign_service.is_available() else "websocket_not_available"
     return jsonify({
         "code": 200,
         "msg": "服务运行正常",
         "data": True,
-        "sign64_status": sign64_status
+        "sign_status": sign_status
     }), 200
 
 
 @app.route('/getCode', methods=['POST'])
 def getcode():
     """
-    基于 Sign64.dll 的 getCode 接口
+    基于 WebSocket 签名服务的 getCode 接口
     
     请求体：密文 -> 解密后JSON，需要字段：
     {
@@ -225,8 +225,8 @@ def getcode():
         "data": "加密后的密文（包含 getCodeResult）"
     }
     """
-    if not sign64.is_available():
-        msg = "Sign64.dll 未正确加载，请确认运行环境为 Windows 且 DLL 路径正确"
+    if not sign_service.is_available():
+        msg = "WebSocket 签名服务未正确初始化"
         logger.error(msg)
         return jsonify({
             "code": 500,
@@ -264,10 +264,10 @@ def getcode():
             }), 400
 
         
-        result = sign64.get_code(str_data, pwdstr)
+        result = sign_service.get_code(str_data, pwdstr)
         
-        logger.info("Sign64.getCode 调用成功，结果长度=%d", len(result))
-        logger.debug("Sign64.getCode 返回结果: %r", result[:200])
+        logger.info("WebSocket.getCode 调用成功，结果长度=%d", len(result))
+        logger.debug("WebSocket.getCode 返回结果: %r", result[:200])
         
         # 拆分结果：如果符合 "签名字符串||证书号字符串" 格式，且两部分都有值，则拆分
         # 如果无法拆分，返回错误并将结果放到msg中
@@ -325,15 +325,15 @@ def getcode():
             "msg": str(e),
             "data": False
         }), 400
-    except Sign64Error as e:
-        logger.error("Sign64Error: %s", e, exc_info=True)
+    except WebSocketError as e:
+        logger.error("WebSocketError: %s", e, exc_info=True)
         return jsonify({
             "code": 500,
             "msg": str(e),
             "data": False
         }), 500
     except Exception as e:
-        msg = f"调用 Sign64.getCode 失败: {e}"
+        msg = f"调用 WebSocket.getCode 失败: {e}"
         logger.error(msg, exc_info=True)
         return jsonify({
             "code": 500,
@@ -351,5 +351,15 @@ if __name__ == '__main__':
     # logger.info(f"XML文件保存目录: {config.SAVE_FOLDER}")
     logger.info(f"服务地址: http://{config.HOST}:{config.PORT}")
     
-    app.run(host=config.HOST, port=config.PORT, debug=True)
+    # 启动 WebSocket 连接
+    try:
+        sign_service.start()
+    except Exception as e:
+        logger.error(f"启动 WebSocket 连接失败: {e}", exc_info=True)
+    
+    try:
+        app.run(host=config.HOST, port=config.PORT, debug=True)
+    finally:
+        # 停止 WebSocket 连接
+        sign_service.stop()
 

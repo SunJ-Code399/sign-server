@@ -15,3 +15,6 @@ PORT = 8801
 LOG_LEVEL = "INFO"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
+# WebSocket 签名服务配置
+WS_URL = "ws://127.0.0.1:61232/"
+
